@@ -79,4 +79,3 @@ function playGame() {
 let userScore = 0;
 let computerScore = 0;
 
-playGame();
