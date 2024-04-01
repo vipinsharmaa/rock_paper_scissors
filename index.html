@@ -4,16 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1> Rock Paper Scissors Game</h1>
-        <h2> Open the developer console to play this game for now.</h2>
-        <button onclick="playGame()">Click to play!</button>
-    </div>
-    <script src="external.js"></script>
+    <div id="container">
+        <header>
+            <h1> Rock Paper Scissors Game</h1>
+            <h2> Click on the buttons below to play the game against the Computer</h2>
+
+        </header>
+
+        <div id="game-area">
+            <div class="buttons">
+                <button class="rock button-3" role="button" value="rock">Rock</button>
+                <button class="paper button-3" role="button" value="paper">Paper</button>
+                <button class="scissors button-3" role="button" value="scissors">Scissors</button>
+            </div>
+            <div class="level-result">
+                <p>Level Results:</p>
+                <p class="lvlResult"></p>
+            </div>
+        </div>
+
+        <div id="game-score">
+            <h3>Score</h3>
+            <h4>You: <span class="dispUserScore"></span></h4>
+            <h4>Computer: <span class="dispCompScore"></span></h4>
+            <h2 class="finalResult"></h2>
+        </div>
+        <script src="external.js"></script>
 </body>
 
 </html>

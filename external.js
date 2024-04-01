@@ -1,3 +1,8 @@
+// initial scores
+let userScore = 0;
+let computerScore = 0;
+
+
 // generate computer choices
 //----------------------------
 
@@ -53,29 +58,52 @@ function playOneRound(playerSelection, computerSelection) {
 
 }
 
+// disable buttons when game is won or lost
+
+function disableButtons() {
+    buttons.forEach(button => {
+        button.disabled = true
+    })
+}
+
 
 // Play the game
 //-------------------
 
-function playGame() {
 
-    do {
-        let playerSelection = prompt("Enter your choice: ");
-        playerSelection = playerSelection.toLowerCase();
+const buttons = document.querySelectorAll('.button-3');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', function () {
         const computerSelection = getComputerChoice();
-        console.log(playOneRound(playerSelection, computerSelection));
+        const playerSelection = button.value;
 
-        if (userScore === 5) {
-            console.log(`You won ${userScore}-${computerScore}`);
+        // display result for current round
+        const lvlResult = document.querySelector('.lvlResult');
+        lvlResult.innerText = playOneRound(playerSelection, computerSelection);
 
+        // display overall game score
+        const dispUserScore = document.querySelector('.dispUserScore');
+        dispUserScore.innerText = userScore;
+
+        const dispCompScore = document.querySelector('.dispCompScore');
+        dispCompScore.innerText = computerScore;
+
+        // if user or computer scores 5 game over and display final result
+        if (userScore == 5) {
+            disableButtons();
+            const finalResult = document.querySelector('.finalResult');
+            finalResult.innerText = `Congrats !! You won ${userScore}-${computerScore}`;
         }
-        else if (computerScore === 5) {
-            console.log(`You lost ${userScore}-${computerScore}`);
-        }
-    } while (userScore < 5 && computerScore < 5)
-}
 
-// initial scores
-let userScore = 0;
-let computerScore = 0;
+        else if (computerScore == 5) {
+            disableButtons();
+            const finalResult = document.querySelector('.finalResult');
+            finalResult.innerText = `On no !! You lost ${userScore}-${computerScore}. Refresh page to play again.`;
+        }
+
+    });
+});
+
+
 
